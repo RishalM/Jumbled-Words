@@ -1,1 +1,0 @@
-mongodb+srv://Rishal:9pNAHt92rcUS3Lk0@rishal.68vjh.mongodb.net/NoteManager?retryWrites=true&w=majority&ssl=true
