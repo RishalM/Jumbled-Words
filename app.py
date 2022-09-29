@@ -1,7 +1,5 @@
-from re import A
 from flask_moment import Moment
 import random
-from crypt import methods
 from flask import Flask, render_template, request, redirect, flash
 import os
 import pymongo
