@@ -3,7 +3,7 @@ import random
 from flask import Flask, render_template, request, redirect, flash
 import os
 import pymongo
-app = Flask("Jumbled Words")
+app = Flask(__name__)
 moment = Moment(app)
 if os.environ.get("MONGO_URI") == None: #we are running the code on our computer. If we run on our computer, os.environ.get("MONGO_URI") will be none
     file = open("connectionString.txt","r")
@@ -25,7 +25,6 @@ def index():
         addwordlist = list(wordtoadd)
         random.shuffle(addwordlist)
         jumbledword = "".join(addwordlist)
-        print(jumbledword)
         record = {"originalWord":wordtoadd,"jumbledword":jumbledword}
         collection.insert_one(record)
         return redirect ("/")
@@ -46,25 +45,7 @@ def play():
         for i in range(0,len(allcorrectanswers),1):
             if alluseranswers[i] == allcorrectanswers[i]:
                 numberofcorrectanswers = numberofcorrectanswers + 1
-        print(numberofcorrectanswers,"out of",len(allcorrectanswers))
         lenofcorrectanswers = len(allcorrectanswers)
         return render_template("result.html",numberofcorrectanswers=numberofcorrectanswers,lenofcorrectanswers = lenofcorrectanswers)
-
-        
-
-
-
-        
-    
-
-
-
-
-
-
-
-
-
-
-
-app.run(debug=True)
+if __name__== "__main__":
+    app.run()
