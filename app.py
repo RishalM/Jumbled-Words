@@ -14,6 +14,7 @@ else: # we are running this code on Heroku's computer. Here, os.environ.get("MON
 client = pymongo.MongoClient(content)
 database = client["JumbledWords"]
 collection = database["AllWords"]
+#
 
 @app.route("/", methods = ["GET","POST"])
 def index():
